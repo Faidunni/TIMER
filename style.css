@@ -66,5 +66,6 @@ h3 {
 
   #countdown {
     flex-direction: column;
+    text-align: center;
   }
 }
