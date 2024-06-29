@@ -53,9 +53,12 @@ h3 {
   small {
     font-weight: bolder;
   }
+  #countdown {
+    flex-direction: column;
+  }
 }
 
-@media screen and (max-width: 428px) {
+@media screen and (max-width: 400px) {
   h1 {
     text-align: center;
     font-size: 40px;
