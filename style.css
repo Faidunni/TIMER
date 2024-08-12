@@ -48,6 +48,13 @@ h3 {
   background-color: bisque;
 }
 
+#startButton {
+  background-color: bisque;
+  padding: 10px 20px;
+  margin-top: 10px;
+  border-radius: 5px;
+  border: none;
+}
 @media screen and (max-width: 600px) {
   h1 {
     font-size: 25px;
@@ -59,12 +66,19 @@ h3 {
   #countdown {
     flex-direction: column;
   }
+  h3 {
+    margin-top: 10px;
+  }
 }
 
 @media screen and (max-width: 400px) {
   h1 {
     text-align: center;
     font-size: 40px;
+  }
+
+  h3 {
+    margin-top: 10px;
   }
 
   #countdown {

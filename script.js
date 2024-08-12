@@ -8,45 +8,53 @@ const seconds = document.getElementById("seconds");
 const timer = document.getElementById("countdown");
 const wish = document.getElementById("text");
 const birthdaySong = document.getElementById("birthdaySong");
+const startButton = document.getElementById("startButton");
 
 const currentYear = new Date().getFullYear();
-const future = new Date(`August 13, ${currentYear} 00:00:00`).getTime();
+const future = new Date(`August 13, ${currentYear} 00:30:00`).getTime();
 
 let currentImageIndex = 0; // Initialize the image index
 
-const updateCountDown = setInterval(function () {
-  const currentTime = new Date().getTime();
-  const distance = future - currentTime;
+function startCountdown() {
+  startButton.style.display = "none"; // Hide the start button
 
-  // Calculate days, hours, minutes, and seconds
-  const d = Math.floor(distance / (1000 * 60 * 60 * 24));
-  const h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  const m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  const s = Math.floor((distance % (1000 * 60)) / 1000);
+  const updateCountDown = setInterval(function () {
+    const currentTime = new Date().getTime();
+    const distance = future - currentTime;
 
-  days.textContent = d;
-  hours.textContent = h < 10 ? "0" + h : h;
-  minutes.textContent = m < 10 ? "0" + m : m;
-  seconds.textContent = s < 10 ? "0" + s : s;
+    // Calculate days, hours, minutes, and seconds
+    const d = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const s = Math.floor((distance % (1000 * 60)) / 1000);
 
-  // Set initial background image (if needed)
-  if (distance > 0 && currentImageIndex === 0) {
-    timerContainer.style.backgroundImage = images[currentImageIndex];
-  }
+    days.textContent = d;
+    hours.textContent = h < 10 ? "0" + h : h;
+    minutes.textContent = m < 10 ? "0" + m : m;
+    seconds.textContent = s < 10 ? "0" + s : s;
 
-  // When countdown reaches 0
-  if (distance <= 0) {
-    clearInterval(updateCountDown);
+    // Set initial background image (if needed)
+    if (distance > 0 && currentImageIndex === 0) {
+      timerContainer.style.backgroundImage = images[currentImageIndex];
+    }
 
-    // Hide the timer and show the birthday wish
-    timer.style.opacity = 0;
-    wish.style.opacity = 1;
+    // When countdown reaches 0
+    if (distance <= 0) {
+      clearInterval(updateCountDown);
 
-    // Change the background image
-    currentImageIndex = (currentImageIndex + 1) % images.length;
-    timerContainer.style.backgroundImage = images[currentImageIndex];
+      // Hide the timer and show the birthday wish
+      timer.style.opacity = 0;
+      wish.style.opacity = 1;
 
-    // Play the Happy Birthday song
-    birthdaySong.play();
-  }
-}, 1000);
+      // Change the background image
+      currentImageIndex = (currentImageIndex + 1) % images.length;
+      timerContainer.style.backgroundImage = images[currentImageIndex];
+
+      // Play the Happy Birthday song
+      birthdaySong.play();
+    }
+  }, 1000);
+}
+
+// Attach the startCountdown function to the button click
+startButton.addEventListener("click", startCountdown);
