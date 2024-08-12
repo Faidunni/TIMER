@@ -4,10 +4,10 @@
   padding: 0;
 }
 
-main {
+.container {
   /* width: 100vw; */
   height: 100vh;
-  background-image: url(images/pexels-changerstudio-140831.jpg);
+  /* background-image: url(images/pexels-changerstudio-140831.jpg); */
   background-position: center center;
   background-size: cover;
   display: flex;
@@ -16,11 +16,12 @@ main {
   padding: 7% 0;
 }
 
-h1 {
+#birthday {
   font-size: 45px;
   font-weight: bolder;
   color: rgb(67, 3, 3);
   margin-bottom: 10px;
+  opacity: 1;
 }
 
 #countdown {
@@ -41,8 +42,10 @@ small {
 }
 
 h3 {
+  margin-top: 60px;
   font-size: 40px;
   opacity: 0;
+  background-color: bisque;
 }
 
 @media screen and (max-width: 600px) {
